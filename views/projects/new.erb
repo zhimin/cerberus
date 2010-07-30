@@ -1,0 +1,43 @@
+<h2>New project</h2>
+
+<% form_tag :action => "create" do %>
+
+	<table border="0" cellspacing="5" cellpadding="5">
+		<tr>
+			<td>Name:</td>
+			<td><%= text_field_tag :project_name, @project.name%></td>
+		</tr>
+		<tr>
+			<td>Source Control:</td>
+			<td>
+			<select name="source_control" onchange="Element.show('source_control_div');">
+		        <option value=""></option>
+		        <option value="git">Git</option>
+	        	<option value="svn">Subversion</option>
+	      	</select></td>
+		</tr>		
+	</table>
+	<table id="source_control_div" 
+		<% unless flash[:error] || flash[:notice] %> style="display:none;" <% end %>
+	border="0" cellspacing="3" cellpadding="3">	
+	<tr>
+		<td width="32"></td>
+		<td>Source Repository:</td>
+		<td><%= text_field_tag "repository", @project.scm_repository, :size => 80 %></td>
+	</tr>
+	<tr>
+		<td width="32"></td>
+		<td>Source Control User:</td>
+		<td><%= text_field_tag "scm_user", "", :size => 32 %> <font color='#7F7F7F'>(Optional)</font></td> 
+	</tr>
+	<tr>
+		<td width="32"></td>
+		<td>Source Control Password:</td>
+		<td><%= password_field_tag "scm_pass", "", :size => 32 %>  <font color='#7F7F7F'>(Optional)</font></td>
+	</tr>
+	</table>
+	
+    <p>
+      <%= submit_tag value="Create" %>
+    </p>
+<% end %>
