@@ -164,3 +164,17 @@ end
 
 desc "Run release_files, publish_news, publish_site"
 task :release => [:release_files, :publish_news, :publish_site]
+
+namespace :db do
+  task :environment do
+    require 'active_record'
+    ActiveRecord::Base.establish_connection :adapter => 'sqlite3', :database =>  'db/buildwise_test.db'
+  end
+
+  desc "Migrate the database"
+  task(:migrate => :environment) do
+    ActiveRecord::Base.logger = Logger.new(STDOUT)
+    ActiveRecord::Migration.verbose = true
+    ActiveRecord::Migrator.migrate("db/migrate")
+  end
+end

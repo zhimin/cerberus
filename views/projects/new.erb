@@ -5,7 +5,7 @@
 	<table border="0" cellspacing="5" cellpadding="5">
 		<tr>
 			<td>Name:</td>
-			<td><%= text_field_tag :project_name, @project.name%></td>
+			<td><input type="text" naame="project_name"%></td>
 		</tr>
 		<tr>
 			<td>Source Control:</td>
@@ -23,17 +23,17 @@
 	<tr>
 		<td width="32"></td>
 		<td>Source Repository:</td>
-		<td><%= text_field_tag "repository", @project.scm_repository, :size => 80 %></td>
+		<td><input type="text" name="repository" value=""%></td>
 	</tr>
 	<tr>
 		<td width="32"></td>
 		<td>Source Control User:</td>
-		<td><%= text_field_tag "scm_user", "", :size => 32 %> <font color='#7F7F7F'>(Optional)</font></td> 
+		<td><input type="text" name="scm_user" value=""%> <font color='#7F7F7F'>(Optional)</font></td> 
 	</tr>
 	<tr>
 		<td width="32"></td>
 		<td>Source Control Password:</td>
-		<td><%= password_field_tag "scm_pass", "", :size => 32 %>  <font color='#7F7F7F'>(Optional)</font></td>
+		<td><input type="password" name="scm_pass" size = "32" %>  <font color='#7F7F7F'>(Optional)</font></td>
 	</tr>
 	</table>
 	

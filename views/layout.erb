@@ -6,13 +6,17 @@
   <%= stylesheet_link_tag 'buildwise', :media => 'all' %>
   <%= stylesheet_link_tag 'site', :media => 'all' if File.exists?(RAILS_ROOT + "/public/stylesheets/site.css") %>
   
+<script src="/javascripts/effects.js" type="text/javascript"></script>
+<script src="/javascripts/dragdrop.js" type="text/javascript"></script>
+<script src="/javascripts/controls.js" type="text/javascript"></script>
+<script src="/javascripts/application.js" type="text/javascript"></script>
+
   <% if @autorefresh %>
     <meta http-equiv="refresh" content="5">
     <meta http-equiv="cache-control" content="no-cache">
   <% end %>
   <% if @rss_feeds %>
     <% @rss_feeds.sort.each do |title, url| %>
-      <%= auto_discovery_link_tag :rss, url_path(url), {:title => title} %>
     <% end %>
   <% end %>
 </head>
